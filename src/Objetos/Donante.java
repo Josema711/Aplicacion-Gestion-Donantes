@@ -1,6 +1,5 @@
 package Objetos;
 
-import java.sql.Date;
 
 public class Donante {
 	
@@ -11,10 +10,11 @@ public class Donante {
 	private String Apellido1;
 	private String Apellido2;
 	private String identificacion;
-	private Date fecha_nacimiento;
+	private String fecha_nacimiento;
 	private String direccion;
 	private String poblacion;
 	private int cp;
+	private int telefono;
 	private String correo;
 	private String sexo;
 	private String grupo_sanguineo;
@@ -25,18 +25,19 @@ public class Donante {
 	//Constructor
 	
 	public Donante(int nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
-			Date fecha_nacimiento, String direccion, String poblacion, int cp, String correo, String sexo,
+			String fecha_nacimiento2, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
 			String grupo_sanguineo, String ciclo) {
 		super();
 		this.nºdonante = nºdonante;
 		this.nombre = nombre;
-		Apellido1 = apellido1;
-		Apellido2 = apellido2;
+		this.Apellido1 = apellido1;
+		this.Apellido2 = apellido2;
 		this.identificacion = identificacion;
-		this.fecha_nacimiento = fecha_nacimiento;
+		this.fecha_nacimiento = fecha_nacimiento2;
 		this.direccion = direccion;
 		this.poblacion = poblacion;
 		this.cp = cp;
+		this.telefono = telefono;
 		this.correo = correo;
 		this.sexo = sexo;
 		this.grupo_sanguineo = grupo_sanguineo;
@@ -87,11 +88,11 @@ public class Donante {
 		this.identificacion = identificacion;
 	}
 
-	public Date getFecha_nacimiento() {
+	public String getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
 
-	public void setFecha_nacimiento(Date fecha_nacimiento) {
+	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
@@ -149,6 +150,18 @@ public class Donante {
 
 	public void setCiclo(String ciclo) {
 		this.ciclo = ciclo;
+	}
+
+
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
 	}
 	
 	

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.5756385068762279" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="511.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladoraDonante">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="818.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <TableView layoutY="-6.0" prefHeight="221.0" prefWidth="737.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="NºDonante" />
+                <TableColumn prefWidth="75.0" text="Nombre" />
+                  <TableColumn prefWidth="75.0" text="Apellido1" />
+                  <TableColumn prefWidth="75.0" text="Apellido2" />
+                  <TableColumn prefWidth="75.0" text="DNI/NIE" />
+                  <TableColumn prefWidth="75.0" text="Fecha de Nacimiento" />
+                  <TableColumn prefWidth="75.0" text="Direccion" />
+                  <TableColumn prefWidth="75.0" text="Poblacion" />
+                  <TableColumn prefWidth="75.0" text="CP" />
+                  <TableColumn prefWidth="75.0" text="Telefono" />
+                  <TableColumn prefWidth="75.0" text="Correo" />
+                  <TableColumn prefWidth="75.0" text="Sexo" />
+                  <TableColumn prefWidth="75.0" text="Grupo Sanguineo" />
+                  <TableColumn prefWidth="75.0" text="Ciclo" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
