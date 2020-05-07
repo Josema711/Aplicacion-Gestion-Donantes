@@ -76,9 +76,9 @@ public class Main extends Application {
             	 * Añadimos las llamadas del main al controlador y del controlador al main
             	 */
             
-            ControladoraDonante controladora = loader.getController();
-            controladora.setPrimaryStage(ventana);
-            controladora.setMenuPrincipal(this);
+            ControladoraDonante controladoraI = loader.getController();
+            controladoraI.setPrimaryStage(ventana);
+            controladoraI.setMenuPrincipal(this);
             
             ventana.show();
             
@@ -103,9 +103,9 @@ public class Main extends Application {
             	 * Añadimos las llamadas del main al controlador y del controlador al main
             	 */
             
-            ControladoraDonacion controladora = loader.getController();
-            controladora.setPrimaryStage(ventana);
-            controladora.setMenuPrincipal(this);
+            ControladoraDonacion controladoraI = loader.getController();
+            controladoraI.setPrimaryStage(ventana);
+            controladoraI.setMenuPrincipal(this);
             
             ventana.show();
             
@@ -130,9 +130,9 @@ public class Main extends Application {
             	 * Añadimos las llamadas del main al controlador y del controlador al main
             	 */
             
-            ControladoraEstadisticas controladora = loader.getController();
-            controladora.setPrimaryStage(ventana);
-            controladora.setMenuPrincipal(this);
+            ControladoraEstadisticas controladoraI = loader.getController();
+            controladoraI.setPrimaryStage(ventana);
+            controladoraI.setMenuPrincipal(this);
             
             ventana.show();
             
@@ -158,9 +158,9 @@ public class Main extends Application {
         	 * Añadimos las llamadas del main al controlador y del controlador al main
         	 */
         
-        ControladoraNuevoDonante controladora = loader.getController();
-        controladora.setPrimaryStage(ventana);
-        controladora.setMenuPrincipal(this);
+        ControladoraNuevoDonante controladoraII = loader.getController();
+        controladoraII.setPrimaryStage(ventana);
+        controladoraII.setMenuPrincipal(this);
         
         ventana.show();
         
