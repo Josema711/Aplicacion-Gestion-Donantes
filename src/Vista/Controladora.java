@@ -2,25 +2,12 @@ package Vista;
 
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import Conexion.ConexionBBDD;
-
-import Objetos.Donante;
 import Principal.Main;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class Controladora implements Initializable{
@@ -37,8 +24,8 @@ public class Controladora implements Initializable{
 			private Button Estadisticas;
 		
 
-	 public void setMenuPrincipal(Main menuPrincipal) {
-		MenuPrincipal = menuPrincipal;
+	 public void setMenuPrincipal(Main MenuPrincipal) {
+		this.MenuPrincipal = MenuPrincipal;
 	}
 
 
@@ -54,18 +41,20 @@ public class Controladora implements Initializable{
 	
 	@FXML
 	private void ventanaDonantes() {
-		this.MenuPrincipal.mostrarPrincipal();
+		this.MenuPrincipal.mostrarDonantes();
 	}
 	
 	@FXML
 	private void ventanaDonaciones() {
-		this.MenuPrincipal.mostrarPrincipal();
+		this.MenuPrincipal.mostrarDonaciones();
 	}
+	
 	
 	@FXML
 	private void ventanaEstadisticas() {
-		this.MenuPrincipal.mostrarPrincipal();
+		this.MenuPrincipal.mostrarEstadisticas();
 	}
+	
 	
 		
 

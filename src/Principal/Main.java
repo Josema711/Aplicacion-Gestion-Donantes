@@ -4,6 +4,7 @@ import Vista.Controladora;
 import Vista.ControladoraDonacion;
 import Vista.ControladoraDonante;
 import Vista.ControladoraEstadisticas;
+import Vista.ControladoraNuevoDonante;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class Main extends Application {
 	
 	
 	
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		launch(args);
 	}
 	
@@ -57,9 +58,12 @@ public class Main extends Application {
 		}
 	}
 
+
+
+
 	public void mostrarDonantes() {
 		try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("..\\Vista\\UIDonante.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("..\\Vista\\UIDonante.fxml"));
             SplitPane VentanaDonantes = (SplitPane) loader.load();
             //Creamos la segunda ventana como otro stage
             Stage ventana = new Stage();
@@ -73,7 +77,8 @@ public class Main extends Application {
             	 */
             
             ControladoraDonante controladora = loader.getController();
-            controladora.setprimaryStage(ventana);
+            controladora.setPrimaryStage(ventana);
+            controladora.setMenuPrincipal(this);
             
             ventana.show();
             
@@ -99,7 +104,8 @@ public class Main extends Application {
             	 */
             
             ControladoraDonacion controladora = loader.getController();
-            controladora.setprimaryStage(ventana);
+            controladora.setPrimaryStage(ventana);
+            controladora.setMenuPrincipal(this);
             
             ventana.show();
             
@@ -125,12 +131,42 @@ public class Main extends Application {
             	 */
             
             ControladoraEstadisticas controladora = loader.getController();
-            controladora.setprimaryStage(ventana);
+            controladora.setPrimaryStage(ventana);
+            controladora.setMenuPrincipal(this);
             
             ventana.show();
             
            } catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+
+
+	public void mostrarNuevoDonante() {
+		try {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("..\\Vista\\UINuevoDonante.fxml"));
+        AnchorPane VentanaNuevoDonante = (AnchorPane) loader.load();
+        //Creamos la segunda ventana como otro stage
+        Stage ventana = new Stage();
+        ventana.setTitle("NuevoDonante");
+        //Marcamos cual es la pincipal
+        ventana.initOwner(primaryStage);
+        Scene scene = new Scene(VentanaNuevoDonante);
+        ventana.setScene(scene);
+        	/*
+        	 * Añadimos las llamadas del main al controlador y del controlador al main
+        	 */
+        
+        ControladoraNuevoDonante controladora = loader.getController();
+        controladora.setPrimaryStage(ventana);
+        controladora.setMenuPrincipal(this);
+        
+        ventana.show();
+        
+       } catch(Exception e) {
+		e.printStackTrace();
+	}
+		
 	}
 }

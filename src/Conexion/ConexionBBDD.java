@@ -31,7 +31,7 @@ public class ConexionBBDD {
 		Properties propiedades = new Properties();
 		InputStream entrada = null;
 		try {
-			File miFichero = new File("src/Modelo/datos.ini");
+			File miFichero = new File("src/Conexion/datosBBDD.ini");
 			if (miFichero.exists()){
 				entrada = new FileInputStream(miFichero);
 				propiedades.load(entrada);
