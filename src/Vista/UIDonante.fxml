@@ -5,41 +5,39 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5756385068762279" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="511.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladoraDonante">
+<SplitPane dividerPositions="0.5756385068762279" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="543.0" prefWidth="1247.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladoraDonante">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="806.0">
          <children>
-            <TextField layoutX="14.0" layoutY="41.0" prefHeight="10.0" prefWidth="78.0" />
             <Label layoutX="14.0" layoutY="14.0" text="Donantes">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="nuevo" layoutX="392.0" layoutY="103.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" text="Nuevo Donante" />
-            <Button fx:id="close" layoutX="416.0" layoutY="170.0" mnemonicParsing="false" onAction="#closeWindow" text="Volver" />
+            <Button fx:id="nuevo" layoutX="46.0" layoutY="170.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" prefHeight="73.0" prefWidth="255.0" text="Nuevo Donante" />
+            <Button fx:id="close" layoutX="1169.0" layoutY="269.0" mnemonicParsing="false" onAction="#closeWindow" text="Volver" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="1311.0">
          <children>
-            <TableView fx:id="Tabla" layoutX="-5.0" layoutY="-4.0" prefHeight="221.0" prefWidth="1108.0">
+            <TableView fx:id="Tabla" layoutX="-4.0" layoutY="-4.0" prefHeight="237.0" prefWidth="1249.0">
               <columns>
-                <TableColumn fx:id="ColN_Donante" prefWidth="71.0" text="NºDonante" />
-                <TableColumn fx:id="ColNombre" prefWidth="79.0" text="Nombre" />
-                  <TableColumn fx:id="ColApellido1" prefWidth="93.0" text="Apellido1" />
-                  <TableColumn fx:id="ColApellido2" prefWidth="90.0" text="Apellido2" />
-                  <TableColumn fx:id="ColIdentificacion" prefWidth="56.0" text="DNI/NIE" />
-                  <TableColumn fx:id="ColFecha_nacimiento" prefWidth="125.0" text="Fecha de Nacimiento" />
-                  <TableColumn fx:id="ColDireccion" prefWidth="61.0" text="Direccion" />
-                  <TableColumn fx:id="ColPoblacion" prefWidth="65.0" text="Poblacion" />
-                  <TableColumn fx:id="ColCP" prefWidth="47.0" text="CP" />
-                  <TableColumn fx:id="ColTelefono" prefWidth="89.0" text="Telefono" />
-                  <TableColumn fx:id="ColCorreo" prefWidth="129.0" text="Correo" />
-                  <TableColumn fx:id="ColSexo" prefWidth="41.0" text="Sexo" />
-                  <TableColumn fx:id="ColGrupo_sanguineo" prefWidth="103.0" text="Grupo Sanguineo" />
-                  <TableColumn fx:id="ColCiclo" prefWidth="58.0" text="Ciclo" />
+                <TableColumn fx:id="ColN_Donante" prefWidth="69.0" text="NºDonante" />
+                <TableColumn fx:id="ColNombre" prefWidth="95.0" text="Nombre" />
+                  <TableColumn fx:id="ColApellido1" prefWidth="91.66667175292969" text="Apellido1" />
+                  <TableColumn fx:id="ColApellido2" prefWidth="90.00001525878906" text="Apellido2" />
+                  <TableColumn fx:id="ColIdentificacion" prefWidth="79.0" text="DNI/NIE" />
+                  <TableColumn fx:id="ColFecha_nacimiento" prefWidth="83.66665649414062" text="F.Nacimiento" />
+                  <TableColumn fx:id="ColDireccion" prefWidth="111.0" text="Direccion" />
+                  <TableColumn fx:id="ColPoblacion" prefWidth="101.0" text="Poblacion" />
+                  <TableColumn fx:id="ColCP" prefWidth="52.0" text="CP" />
+                  <TableColumn fx:id="ColTelefono" prefWidth="110.0" text="Telefono" />
+                  <TableColumn fx:id="ColCorreo" prefWidth="144.0" text="Correo" />
+                  <TableColumn fx:id="ColSexo" prefWidth="79.0" text="Sexo" />
+                  <TableColumn fx:id="ColGrupo_sanguineo" prefWidth="57.0" text="Grupo S." />
+                  <TableColumn fx:id="ColCiclo" prefWidth="83.0" text="Ciclo" />
               </columns>
             </TableView>
          </children></AnchorPane>
