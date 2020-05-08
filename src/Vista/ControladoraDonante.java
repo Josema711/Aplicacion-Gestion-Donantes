@@ -86,7 +86,7 @@ public class ControladoraDonante {
 	
 	ConexionBBDD con = new ConexionBBDD();
 	   
-		private ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
+		protected ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
 	  
 	
 	 

@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,7 +81,7 @@ public class ConexionBBDD {
 			ResultSet resultado = stm.executeQuery(select);
 
 			while(resultado.next()){
-				int nºdonante = resultado.getInt(1);
+				Integer nºdonante = resultado.getInt(1);
 				String nombre = resultado.getString(2);
 				String apellido1 = resultado.getString(3);
 				String apellido2 = resultado.getString(4);
@@ -113,5 +113,102 @@ public class ConexionBBDD {
 
 		return listaDonantes;
 	}
+	
+	//---------------------------------ACCION DE ACTUALIZAR------------------------------------
+	
+	public void ActualizarDatos(Donante Donante1,Donante Donante2) throws SQLException{
+		 
+		 String update = "UPDATE JOSEMA.DONANTE SET NºDONANTE=?,NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=?";		
+		
+		  PreparedStatement pstmt = conexion.prepareStatement(update);
+			
+
+				
+			pstmt.setLong(1, Donante2.getNºdonante());
+			pstmt.setString(2, Donante2.getNombre());
+			pstmt.setString(3, Donante2.getApellido1());
+			pstmt.setString(4, Donante2.getApellido2());
+			pstmt.setString(5, Donante2.getIdentificacion());
+			pstmt.setString(6, Donante2.getFecha_nacimiento());
+			pstmt.setString(7, Donante2.getDireccion());
+			pstmt.setString(8, Donante2.getPoblacion());
+			pstmt.setLong(9, Donante2.getCp());
+			pstmt.setLong(10, Donante2.getTelefono());
+			pstmt.setString(11, Donante2.getCorreo());
+			pstmt.setString(12, Donante2.getSexo());
+			pstmt.setString(13, Donante2.getGrupo_sanguineo());
+			pstmt.setString(14, Donante2.getCiclo());
+
+	try{
+			int resultado = pstmt.executeUpdate(update);
+				
+			if(resultado != 1)
+				System.out.println("Error en la modificación " + resultado);
+		
+	}catch(SQLException e){
+		System.out.println(e);
+		int pos = e.getMessage().indexOf(":");
+		String codeError = e.getMessage().substring(0, pos);
+		if(codeError.equals("ORA-00955") )
+			System.out.println("La tabla Donante ya estaba creada!!!");
+		else
+			System.out.println("Ha habido algún problema con Oracle al hacer la modificación de campo");
+	}
+		  }
+	
+	//-------------------------ACCION DE GUARDAR-------------------------------------------
+	
+	public void Guardar(Integer nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
+			String fecha_nacimiento, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
+			String grupo_sanguineo, String ciclo) throws SQLException{
+		
+		//Insercion de datos
+		
+		String insert = "INSERT INTO JOSEMA.FINAL VALUES (?,?,?,?,?)";
+		
+		PreparedStatement pstmt = conexion.prepareStatement(insert);
+		
+			
+		pstmt.setLong(1, nºdonante);
+		pstmt.setString(2,  nombre);
+		pstmt.setString(3, apellido1);
+		pstmt.setString(4, apellido2);
+		pstmt.setString(5, identificacion);
+		pstmt.setString(6, fecha_nacimiento);
+		pstmt.setString(7, direccion);
+		pstmt.setString(8, poblacion);
+		pstmt.setLong(9, cp);
+		pstmt.setLong(10, telefono);
+		pstmt.setString(11, correo);
+		pstmt.setString(12, sexo);
+		pstmt.setString(13, grupo_sanguineo);
+		pstmt.setString(14, ciclo);
+
+	try{
+				
+			int resultado = pstmt.executeUpdate();
+				
+			if(resultado != 1)
+				System.out.println("Error en la inserción " + resultado);
+				
+	}catch(SQLException e){
+				
+		int pos = e.getMessage().indexOf(":");
+		String codeError = e.getMessage().substring(0, pos);
+		if(codeError.equals("ORA-00001") )
+			System.out.println("NºDonante ya existente.");
+				
+		else if(codeError.equals("ORA-00001"))
+					
+			System.out.println("Algun campo es demasiado largo");
+		else if(codeError.equals("ORA-12899"))
+			System.out.println("Exceso de caracteres");
+		else
+			System.out.println("Problema al introducir datos: " + e);
+	}
+	
+	
+
+}
 	
 }

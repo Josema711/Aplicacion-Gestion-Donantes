@@ -5,7 +5,7 @@ public class Donante {
 	
 	//Atributos
 	
-	private int nºdonante;
+	private Integer nºdonante;
 	private String nombre;
 	private String Apellido1;
 	private String Apellido2;
@@ -24,8 +24,8 @@ public class Donante {
 	
 	//Constructor
 	
-	public Donante(int nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
-			String fecha_nacimiento2, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
+	public Donante(Integer nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
+			String fecha_nacimiento, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
 			String grupo_sanguineo, String ciclo) {
 		super();
 		this.nºdonante = nºdonante;
@@ -33,7 +33,7 @@ public class Donante {
 		this.Apellido1 = apellido1;
 		this.Apellido2 = apellido2;
 		this.identificacion = identificacion;
-		this.fecha_nacimiento = fecha_nacimiento2;
+		this.fecha_nacimiento = fecha_nacimiento;
 		this.direccion = direccion;
 		this.poblacion = poblacion;
 		this.cp = cp;
@@ -48,11 +48,11 @@ public class Donante {
 	
 	//Metodos
 
-	public int getNºdonante() {
+	public Integer getNºdonante() {
 		return nºdonante;
 	}
 
-	public void setNºdonante(int nºdonante) {
+	public void setNºdonante(Integer nºdonante) {
 		this.nºdonante = nºdonante;
 	}
 
