@@ -89,8 +89,8 @@ public class ConexionBBDD {
 				String fecha_nacimiento = resultado.getString(6);
 				String direccion = resultado.getString(7);
 				String poblacion = resultado.getString(8);
-				int cp = resultado.getInt(9);
-				int telefono = resultado.getInt(10);
+				Integer cp = resultado.getInt(9);
+				Integer telefono = resultado.getInt(10);
 				String correo = resultado.getString(11);
 				String sexo = resultado.getString(12);
 				String grupo_sanguineo = resultado.getString(13);
@@ -164,7 +164,7 @@ public class ConexionBBDD {
 		
 		//Insercion de datos
 		
-		String insert = "INSERT INTO JOSEMA.FINAL VALUES (?,?,?,?,?)";
+		String insert = "INSERT INTO JOSEMA.FINAL VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement pstmt = conexion.prepareStatement(insert);
 		

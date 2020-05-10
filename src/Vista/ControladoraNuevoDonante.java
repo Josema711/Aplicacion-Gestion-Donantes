@@ -2,7 +2,6 @@ package Vista;
 
 import java.awt.Button;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 
 import Objetos.Donante;
@@ -12,14 +11,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
+
 
 public class ControladoraNuevoDonante extends ControladoraDonante {
 	
@@ -27,13 +24,12 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 
 	private Main MenuPrincipal;
 	
-	
 	@FXML
-	private Button volver;
+	private Button Guardar;
 	@FXML
-	private Button guardar;
+	private Button Borrar;
 	@FXML
-	private Button borrar;
+	private Button Volver;
 	
 	private Stage ventana;
 	
@@ -59,8 +55,6 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
  		private TextField Apellido2;
 	@FXML
 		private TextField Nombre;
-	@FXML
- 		private TextField NºDonante;
 	@FXML
  		private TextField Identificacion;
 	@FXML
@@ -92,14 +86,15 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
  	
  	
 	
- 			private ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
+ 	private ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
 	   
- 				private boolean edicion=false;
- 				private int indiceEdicion=0;
- 	
-	   public void Guardar(ActionEvent event) throws SQLException{
+		private boolean edicion=false;
+		private int indiceEdicion=0;
+
 		
-		Integer NºDonante = (int) (Math.random()*(99999));
+
+ 	public void Guardar(ActionEvent event) throws SQLException{
+ 		Integer NºDonante = (int) (Math.random()*(99999));
 		String sexo;
 
 		if(HombreBotton.isSelected())
@@ -107,7 +102,7 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 		else
 			sexo = "Mujer";
 
-		// Añadir un chequeo de campos vacíos o de validación de formato como el email
+		// Añadir un chequeo de campos vacíos
 		if(Nombre.getText().equals("") || Apellido1.getText().equals("") || Apellido2.getText().equals("") || Identificacion.getText().equals("") || Correo.getText().equals("") || Sangre.getText().equals("") || Ciclo.getText().equals("") || Telefono.getText().equals("")){
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error!!!");
@@ -194,10 +189,12 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 				this.Ciclo.setText("");
 				
 				
-				}
-	   
-	   public void Borrar(ActionEvent event) throws SQLException{
-		   this.Nombre.setText("");
+
+ 		}
+
+ 	public void Borrar(ActionEvent event) throws SQLException{
+ 		
+ 		 	this.Nombre.setText("");
 			this.Apellido1.setText("");
 			this.Apellido2.setText("");
 			this.Identificacion.setText("");
@@ -210,8 +207,8 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 			//Sexo no se puede poner en blanco que yo sepa
 			this.Sangre.setText("");
 			this.Ciclo.setText("");
-	   
-	   }
+
+ 		}
 
 	}
 

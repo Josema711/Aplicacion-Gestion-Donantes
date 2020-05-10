@@ -99,7 +99,7 @@ public class ControladoraDonante {
 		 TablaDonantes = con.MostrarTabla();
 		
 		 Tabla.setItems(TablaDonantes);
-		 ColN_Donante.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("NºDonante"));
+		 ColN_Donante.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("Nºdonante"));
 		 ColNombre.setCellValueFactory(new PropertyValueFactory<Donante,String>("Nombre"));
 		 ColApellido1.setCellValueFactory(new PropertyValueFactory<Donante,String>("Apellido1"));
 		 ColApellido2.setCellValueFactory(new PropertyValueFactory<Donante,String>("Apellido2"));
@@ -107,7 +107,7 @@ public class ControladoraDonante {
 		 ColFecha_nacimiento.setCellValueFactory(new PropertyValueFactory<Donante,String>("Fecha_nacimiento"));
 		 ColDireccion.setCellValueFactory(new PropertyValueFactory<Donante,String>("Direccion"));
 		 ColPoblacion.setCellValueFactory(new PropertyValueFactory<Donante,String>("Poblacion"));
-		 ColCP.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("CP"));
+		 ColCP.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("Cp"));
 		 ColTelefono.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("Telefono"));
 		 ColCorreo.setCellValueFactory(new PropertyValueFactory<Donante,String>("Correo"));
 		 ColSexo.setCellValueFactory(new PropertyValueFactory<Donante,String>("Sexo"));
