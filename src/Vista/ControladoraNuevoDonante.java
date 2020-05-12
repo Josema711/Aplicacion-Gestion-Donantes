@@ -1,13 +1,14 @@
 package Vista;
 
-import java.awt.Button;
+//Problema//
+		import javafx.scene.control.Button;
+//Problema//
+
 import java.sql.SQLException;
 
 
 import Objetos.Donante;
 import Principal.Main;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -60,7 +61,7 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 	@FXML
 		private TextField Fecha_nacimiento; 
 	@FXML
-	private TextField Direccion;
+		private TextField Direccion;
 	@FXML
  		private TextField Poblacion;
 	@FXML
@@ -83,27 +84,25 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
  	
  	
  	//-----------------------ACCIONES----------------------//
- 	
- 	
-	
- 	private ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
-	   
-		private boolean edicion=false;
-		private int indiceEdicion=0;
 
 		
 
  	public void Guardar(ActionEvent event) throws SQLException{
+ 		
+ 		//Numero aleatorio para que no se repitan
  		Integer NºDonante = (int) (Math.random()*(99999));
+ 		NºDonante = (int) Math.floor(NºDonante);
+ 		
 		String sexo;
 
-		if(HombreBotton.isSelected())
+		if(HombreBotton.isSelected()) {
 			sexo = "Hombre";
-		else
+		}else {
 			sexo = "Mujer";
+		}
 
-		// Añadir un chequeo de campos vacíos
-		if(Nombre.getText().equals("") || Apellido1.getText().equals("") || Apellido2.getText().equals("") || Identificacion.getText().equals("") || Correo.getText().equals("") || Sangre.getText().equals("") || Ciclo.getText().equals("") || Telefono.getText().equals("")){
+		// Añadir un chequeo de campos vacío
+		if(Nombre.getText().equals("") || Apellido1.getText().equals("") || Apellido2.getText().equals("") || Identificacion.getText().equals("") || Correo.getText().equals("") || Sangre.getText().equals("") || Ciclo.getText().equals("")){
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error!!!");
 			alert.setHeaderText("¡¡Hay campos vacios!!");
@@ -112,7 +111,7 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 		}
 		else{
 
-			NºDonante = (int) Math.floor(NºDonante);
+			
 			
 			Donante DonanteNuevoA = new Donante(NºDonante, Nombre.getText(), Apellido1.getText(), Apellido2.getText(), Identificacion.getText(), Fecha_nacimiento.getText(), Direccion.getText(), Poblacion.getText(), Integer.parseInt(CP.getText()), Integer.parseInt(Telefono.getText()), Correo.getText(), sexo, Sangre.getText(), Ciclo.getText());
 			TablaDonantes2.add(DonanteNuevoA);
@@ -134,7 +133,7 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 				editada.setGrupo_sanguineo(Sangre.getText());
 				editada.setCiclo(Ciclo.getText());
 				TablaDonantes.set(indiceEdicion, editada);
-				con.ActualizarDatos(TablaDonantes2.get(0), editada);
+				con.ActualizarDatosDonante(TablaDonantes2.get(0), editada);
 				
 				Alert alerta = new Alert ( AlertType.INFORMATION ); 
 			   	alerta . setTitle ( "Información" ); 
@@ -145,13 +144,13 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 			}else{
 				
 				Donante DonanteNuevoB = new Donante(NºDonante, Nombre.getText(), Apellido1.getText(), Apellido2.getText(), Identificacion.getText(), Fecha_nacimiento.getText(), Direccion.getText(), Poblacion.getText(), Integer.parseInt(CP.getText()), Integer.parseInt(Telefono.getText()), Correo.getText(), sexo, Sangre.getText(), Ciclo.getText());
-				con.Guardar(NºDonante, Nombre.getText(), Apellido1.getText(), Apellido2.getText(), Identificacion.getText(), Fecha_nacimiento.getText(), Direccion.getText(), Poblacion.getText(), Integer.parseInt(CP.getText()), Integer.parseInt(Telefono.getText()), Correo.getText(), sexo, Sangre.getText(), Ciclo.getText());
+				con.GuardarDonante(NºDonante, Nombre.getText(), Apellido1.getText(), Apellido2.getText(), Identificacion.getText(), Fecha_nacimiento.getText(), Direccion.getText(), Poblacion.getText(), Integer.parseInt(CP.getText()), Integer.parseInt(Telefono.getText()), Correo.getText(), sexo, Sangre.getText(), Ciclo.getText());
 				
 				boolean esta = false;
 				
 				for(Donante a : TablaDonantes){
 					if(a.getNºdonante().equals(DonanteNuevoB.getNºdonante())  ||  a.getIdentificacion().equals(DonanteNuevoB.getIdentificacion())){
-						
+						esta=true;
 					}
 
 				}

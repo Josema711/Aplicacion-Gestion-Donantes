@@ -87,8 +87,9 @@ public class ControladoraDonante {
 	ConexionBBDD con = new ConexionBBDD();
 	   
 		protected ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
-	  
-	
+		protected ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
+			protected boolean edicion=false;
+			protected int indiceEdicion=0;
 	 
 	 
 	 
@@ -96,7 +97,7 @@ public class ControladoraDonante {
 		
 		
 		
-		 TablaDonantes = con.MostrarTabla();
+		 TablaDonantes = con.MostrarTablaDonante();
 		
 		 Tabla.setItems(TablaDonantes);
 		 ColN_Donante.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("Nºdonante"));

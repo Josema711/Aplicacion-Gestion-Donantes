@@ -13,8 +13,8 @@ public class Donante {
 	private String fecha_nacimiento;
 	private String direccion;
 	private String poblacion;
-	private int cp;
-	private int telefono;
+	private Integer cp;
+	private Integer telefono;
 	private String correo;
 	private String sexo;
 	private String grupo_sanguineo;
@@ -25,7 +25,7 @@ public class Donante {
 	//Constructor
 	
 	public Donante(Integer nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
-			String fecha_nacimiento, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
+			String fecha_nacimiento, String direccion, String poblacion, Integer cp, Integer telefono, String correo, String sexo,
 			String grupo_sanguineo, String ciclo) {
 		super();
 		this.nºdonante = nºdonante;
@@ -112,11 +112,11 @@ public class Donante {
 		this.poblacion = poblacion;
 	}
 
-	public int getCp() {
+	public Integer getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(Integer cp) {
 		this.cp = cp;
 	}
 
@@ -154,13 +154,13 @@ public class Donante {
 
 
 
-	public int getTelefono() {
+	public Integer getTelefono() {
 		return telefono;
 	}
 
 
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 	

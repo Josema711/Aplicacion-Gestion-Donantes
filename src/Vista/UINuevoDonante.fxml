@@ -36,20 +36,8 @@
       <TextField fx:id="Ciclo" layoutX="381.0" layoutY="231.0" prefHeight="25.0" prefWidth="101.0" promptText="Ciclo Cursando" />
       <TextField fx:id="Fecha_nacimiento" layoutX="370.0" layoutY="277.0" promptText="Mes/Dia/Año" />
       <Label layoutX="253.0" layoutY="281.0" text="Fecha de Nacimiento" />
-      <Button layoutX="86.0" layoutY="337.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="34.0" prefWidth="74.0" text="Guardar">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="197.0" layoutY="337.0" mnemonicParsing="false" onAction="#Borrar" prefHeight="34.0" prefWidth="74.0" text="Borrar">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="533.0" layoutY="360.0" mnemonicParsing="false" onAction="#Volver" text="Volver">
-         <font>
-            <Font name="Arial Black" size="10.0" />
-         </font>
-      </Button>
+      <Button fx:id="Guardar" layoutX="86.0" layoutY="337.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="34.0" prefWidth="74.0" text="Guardar" />
+      <Button fx:id="Borrar" layoutX="197.0" layoutY="337.0" mnemonicParsing="false" onAction="#Borrar" prefHeight="34.0" prefWidth="74.0" text="Borrar" />
+      <Button fx:id="Volver" layoutX="533.0" layoutY="360.0" mnemonicParsing="false" onAction="#Volver" text="Volver" />
    </children>
 </AnchorPane>

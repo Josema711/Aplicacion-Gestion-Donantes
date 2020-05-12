@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-
+import Objetos.Donacion;
 import Objetos.Donante;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,7 +69,8 @@ public class ConexionBBDD {
 		}
 	}
 	
-	public ObservableList<Donante> MostrarTabla() throws SQLException{
+	//---------------------------ACCION DE MOSTRAR TABLA------------------------
+	public ObservableList<Donante> MostrarTablaDonante() throws SQLException{
 
 		
 		ObservableList<Donante> listaDonantes =  FXCollections.observableArrayList();
@@ -116,9 +117,9 @@ public class ConexionBBDD {
 	
 	//---------------------------------ACCION DE ACTUALIZAR------------------------------------
 	
-	public void ActualizarDatos(Donante Donante1,Donante Donante2) throws SQLException{
+	public void ActualizarDatosDonante(Donante Donante1,Donante Donante2) throws SQLException{
 		 
-		 String update = "UPDATE JOSEMA.DONANTE SET NºDONANTE=?,NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=?";		
+		 String update = "UPDATE JOSEMA.DONANTE SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=? WHERE NºDONANTE=?";		
 		
 		  PreparedStatement pstmt = conexion.prepareStatement(update);
 			
@@ -158,13 +159,13 @@ public class ConexionBBDD {
 	
 	//-------------------------ACCION DE GUARDAR-------------------------------------------
 	
-	public void Guardar(Integer nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
+	public void GuardarDonante(Integer nºdonante, String nombre, String apellido1, String apellido2, String identificacion,
 			String fecha_nacimiento, String direccion, String poblacion, int cp, int telefono, String correo, String sexo,
 			String grupo_sanguineo, String ciclo) throws SQLException{
 		
 		//Insercion de datos
 		
-		String insert = "INSERT INTO JOSEMA.FINAL VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO JOSEMA.DONANTE VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement pstmt = conexion.prepareStatement(insert);
 		
@@ -210,5 +211,169 @@ public class ConexionBBDD {
 	
 
 }
+	
+	//----------------------------------------ACCION DE BORRAR----------------------------
+	
+	public void BorrarDonante(String nºdonante) throws SQLException{
+		//Borrar datos
+		Statement stm = conexion.createStatement();
+		String delete = "DELETE * FROM JOSEMA.DONANTE WHERE NºDONANTE=?";
+		PreparedStatement pstmt = conexion.prepareStatement(delete);
+			pstmt.setString(1, nºdonante);
+			
+		
+
+		try{
+			int resultado = stm.executeUpdate(delete);
+
+			if(resultado !=1)
+				System.out.println("Error en la inserción " + resultado);
+		}catch(SQLException e){
+					
+			int pos = e.getMessage().indexOf(":");
+			String codeError = e.getMessage().substring(0, pos);
+					
+			if(codeError.equals("ORA-00001") )
+				System.out.println("la tabla Donante ya estaba creada!!!");
+			else
+				System.out.println("Ha habido algún problema con  Oracle al hacer el borrado de tabla");
+		}
+				
+	}
+	
+	
+	
+	
+	//-----------------------------------------//
+	//--------------------------------------//
+	//------------------------------------------------//
+	
+	///---------------------------------ACCION DE MOSTRAR TABLA EN DONACION-------------------------------///
+	
+	public ObservableList<Donacion> MostrarTablaDonacion() throws SQLException{
+
+		
+		ObservableList<Donacion> listaDonaciones =  FXCollections.observableArrayList();
+
+		Statement stm = conexion.createStatement();
+		String select = "SELECT NºDONACION,COD_COLECTA,TIPO_DONACION,PULSO,TA_SIST,TA_DIAST,HB_CAP,HB_VEN,FECHA FROM JOSEMA.DONACION";
+
+		try{
+			ResultSet resultado = stm.executeQuery(select);
+
+			while(resultado.next()){
+				Integer nºdonacion = resultado.getInt(1);
+				Integer cod_colecta = resultado.getInt(2);
+				String tipo_donacion = resultado.getString(3);
+				Integer pulso = resultado.getInt(4);
+				Integer ta_sist = resultado.getInt(5);
+				Integer ta_diast = resultado.getInt(6);
+				Integer hb_cap = resultado.getInt(7);
+				Integer hb_ven = resultado.getInt(8);
+				String fecha = resultado.getString(9);
+				
+				
+						
+				Donacion donacion = new Donacion(nºdonacion, cod_colecta, tipo_donacion, pulso, ta_sist, ta_diast, hb_cap, hb_ven, fecha);
+				listaDonaciones.add(donacion);
+			}
+
+		}catch(SQLException e){
+
+					
+			int pos = e.getMessage().indexOf(":");
+			String codeError = e.getMessage().substring(0,pos);
+
+			System.out.println(codeError);
+		}
+				
+
+		return listaDonaciones;
+	}
+	
+	//-----------------------------------ACCION DE GUARDAR DONACION---------------------------------//
+	
+		public void GuardarDonacion(Integer nºdonacion, Integer cod_colecta, String tipo_donacion, Integer pulso, Integer ta_sist,
+				Integer ta_diast, Integer hb_cap, Integer hb_ven, String fecha) throws SQLException{
+			
+			//Insercion de datos
+			
+			String insert = "INSERT INTO JOSEMA.DONACION VALUES (?,?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstmt = conexion.prepareStatement(insert);
+			
+				
+			pstmt.setLong(1, nºdonacion);
+			pstmt.setLong(2,  cod_colecta);
+			pstmt.setString(3, tipo_donacion);
+			pstmt.setLong(4, pulso);
+			pstmt.setLong(5, ta_sist);
+			pstmt.setLong(6, ta_diast);
+			pstmt.setLong(7, hb_cap);
+			pstmt.setLong(8, hb_ven);
+			pstmt.setString(9, fecha);
+		try{
+					
+				int resultado = pstmt.executeUpdate();
+					
+				if(resultado != 1)
+					System.out.println("Error en la inserción " + resultado);
+					
+		}catch(SQLException e){
+					
+			int pos = e.getMessage().indexOf(":");
+			String codeError = e.getMessage().substring(0, pos);
+			if(codeError.equals("ORA-00001") )
+				System.out.println("NºDonacion ya existente.");
+					
+			else if(codeError.equals("ORA-00001"))
+						
+				System.out.println("Algun campo es demasiado largo");
+			else if(codeError.equals("ORA-12899"))
+				System.out.println("Exceso de caracteres");
+			else
+				System.out.println("Problema al introducir datos: " + e);
+		}
+		
+		
+
+	}
+		
+		//--------------------------Accion de actualizar donaciones--------------------------
+		
+		public void ActualizarDatosDonaciones(Donacion Donacion1,Donacion Donacion2) throws SQLException{
+			 
+			 String update = "UPDATE JOSEMA.DONACION SET COD_COLECTA=?, TIPO_DONACION=?, PULSO=?, TA_SIST=?, TA_DIAST=?, HB_CAP=?, HB_VEN=?, FECHA=? WHERE NºDONACION=?";		
+			
+			  PreparedStatement pstmt = conexion.prepareStatement(update);
+				
+
+					
+				pstmt.setLong(1, Donacion2.getNºdonacion());
+				pstmt.setLong(2, Donacion2.getCod_colecta());
+				pstmt.setString(3, Donacion2.getTipo_donacion());
+				pstmt.setLong(4, Donacion2.getPulso());
+				pstmt.setLong(5, Donacion2.getTa_sist());
+				pstmt.setLong(6, Donacion2.getTa_diast());
+				pstmt.setLong(7, Donacion2.getHb_cap());
+				pstmt.setLong(8, Donacion2.getHb_ven());
+				pstmt.setString(9, Donacion2.getFecha());
+
+		try{
+				int resultado = pstmt.executeUpdate(update);
+					
+				if(resultado != 1)
+					System.out.println("Error en la modificación " + resultado);
+			
+		}catch(SQLException e){
+			System.out.println(e);
+			int pos = e.getMessage().indexOf(":");
+			String codeError = e.getMessage().substring(0, pos);
+			if(codeError.equals("ORA-00955") )
+				System.out.println("La tabla Donacion ya estaba creada!!!");
+			else
+				System.out.println("Ha habido algún problema con Oracle al hacer la modificación de campo");
+		}
+			  }
 	
 }
