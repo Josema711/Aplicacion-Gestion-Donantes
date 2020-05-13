@@ -3,12 +3,16 @@ package Vista;
 //Problema//
 		import javafx.scene.control.Button;
 //Problema//
+import javafx.scene.control.ButtonType;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
-
+import Conexion.ConexionBBDD;
 import Objetos.Donante;
 import Principal.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,10 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 
-public class ControladoraNuevoDonante extends ControladoraDonante {
+public class ControladoraNuevoDonante {
 	
 
 
@@ -47,7 +52,6 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 	
 	public void Volver() {
 		this.ventana.close();
-		this.MenuPrincipal.mostrarDonantes();
 	}
 	
 	@FXML
@@ -81,11 +85,19 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
  	@FXML
 		private TextField Ciclo;
  	
+ 	@FXML
+	   private TableView<Donante> Tabla;
+ 	
  	
  	
  	//-----------------------ACCIONES----------------------//
 
-		
+ 	public ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
+ 	public ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
+	public boolean edicion=false;
+	public int indiceEdicion=0;
+	
+	ConexionBBDD con = new ConexionBBDD();
 
  	public void Guardar(ActionEvent event) throws SQLException{
  		
@@ -190,8 +202,10 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 				
 
  		}
+ 	
+ 	//-----------Accion Borrar-------------------------//
 
- 	public void Borrar(ActionEvent event) throws SQLException{
+ 	public void Borrar() throws SQLException{
  		
  		 	this.Nombre.setText("");
 			this.Apellido1.setText("");
@@ -208,6 +222,88 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 			this.Ciclo.setText("");
 
  		}
+ 	
+ 	//-----------Accion Eliminar-------------------------//
+ 	
+ 	public void Eliminar(ActionEvent event) throws SQLException{
+ 		
+		int index = Tabla.getSelectionModel().getSelectedIndex();
+
+		if(index>=0){
+			
+			Donante selec = Tabla.getSelectionModel().getSelectedItem();
+
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+			       alert.setTitle("Borrando...");
+			       alert.setHeaderText("Desea Borrar a " + selec.getNombre() +" "+ selec.getApellido1() +" "+ selec.getApellido2());
+			      
+			       Optional <ButtonType> result = alert.showAndWait ();
+			       
+			      if (result.get () == ButtonType.OK){
+			    	  
+			    	  	con.BorrarDonante(selec.getNºdonante());
+			    	   	TablaDonantes.remove(selec);
+						
+			    	   	Alert alerta = new Alert ( AlertType.INFORMATION ); 
+			    	   	alerta . setTitle ( "Información" ); 
+			    	   	alerta . setHeaderText (""); 
+			    	   	alerta . setContentText ( "¡Eliminado correctamente!" );  
+			    	   	alerta . showAndWait ();
+			    	   	
+			       
+			      }else{
+			
+				Alert alerta = new Alert(AlertType.ERROR);
+		       alerta.setTitle("Error !");
+		       alerta.setHeaderText("Tiene que seleccionar una fila...");
+		       alerta.showAndWait();
+		}
+		
+		
+		Borrar();
+	}
+		
+		
+}
+	
+	public void Editar() throws SQLException{
+		
+		int index = Tabla.getSelectionModel().getSelectedIndex();
+		
+		if(index >=0){
+			
+			edicion=true;
+			indiceEdicion=index;
+			
+			Donante choose = Tabla.getSelectionModel().getSelectedItem();
+			
+			
+			Nombre.setText(choose.getNombre());
+			Apellido1.setText(choose.getApellido1());
+			Apellido2.setText(choose.getApellido2());
+			Identificacion.setText(choose.getIdentificacion());
+			Fecha_nacimiento.setText(choose.getFecha_nacimiento());
+			Direccion.setText(choose.getDireccion());
+			Poblacion.setText(choose.getPoblacion());
+			Correo.setText(choose.getCorreo());
+			Sangre.setText(choose.getGrupo_sanguineo());
+			Ciclo.setText(choose.getCiclo());
+
+			if(choose.getSexo().equals("Hombre") || choose.getSexo().equals("HOMBRE") || choose.getSexo().equals("H")){
+				
+				HombreBotton.setSelected(true);
+				
+			}else{
+				
+				MujerBotton.setSelected(true);
+			}
+			
+		}
+		
+		
+		
+	}
+
 
 	}
 

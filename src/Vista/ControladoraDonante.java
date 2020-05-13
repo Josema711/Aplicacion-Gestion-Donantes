@@ -22,6 +22,8 @@ public class ControladoraDonante {
 	private Button close;
 	@FXML
 	private Button nuevo;
+	@FXML
+	private Button editar;
 	
 	private Stage ventana;
 	
@@ -71,10 +73,8 @@ public class ControladoraDonante {
 	
 	   ConexionBBDD con;
 	   
-		protected ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
-		protected ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
-			protected boolean edicion=false;
-			protected int indiceEdicion=0;
+		public ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
+		
 	 
 	 
 	 
@@ -116,9 +116,11 @@ public class ControladoraDonante {
 			this.ventana.close();
 		}
 		
-		@FXML
-		private void ventanaNuevoDonante() {
+		public void ventanaNuevoDonante() {
 			this.MenuPrincipal.mostrarNuevoDonante();
+		}
+		public void ventanaEditarDonante() {
+			this.MenuPrincipal.mostrarEdicion();
 		}
 		
 	

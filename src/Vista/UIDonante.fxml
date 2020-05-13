@@ -17,8 +17,9 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="nuevo" layoutX="46.0" layoutY="170.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" prefHeight="73.0" prefWidth="255.0" text="Nuevo Donante" />
+            <Button fx:id="nuevo" layoutX="46.0" layoutY="134.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" prefHeight="73.0" prefWidth="255.0" text="Nuevo Donante" />
             <Button fx:id="close" layoutX="1169.0" layoutY="269.0" mnemonicParsing="false" onAction="#closeWindow" text="Volver" />
+            <Button fx:id="editar" layoutX="428.0" layoutY="134.0" mnemonicParsing="false" onAction="#ventanaEditarDonante" prefHeight="73.0" prefWidth="255.0" text="Editar Donante" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="1311.0">
          <children>
