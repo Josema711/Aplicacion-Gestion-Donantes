@@ -102,7 +102,7 @@ public class ControladoraNuevoDonante extends ControladoraDonante {
 		}
 
 		// Añadir un chequeo de campos vacío
-		if(Nombre.getText().equals("") || Apellido1.getText().equals("") || Apellido2.getText().equals("") || Identificacion.getText().equals("") || Correo.getText().equals("") || Sangre.getText().equals("") || Ciclo.getText().equals("")){
+		if(Nombre.getText().equals("") || Apellido1.getText().equals("") || Apellido2.getText().equals("") || Identificacion.getText().equals("") || Correo.getText().equals("") || Sangre.getText().equals("") || Ciclo.getText().equals("") ){
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error!!!");
 			alert.setHeaderText("¡¡Hay campos vacios!!");

@@ -25,23 +25,7 @@ public class ControladoraDonante {
 	
 	private Stage ventana;
 	
-	public void setMenuPrincipal(Main MenuPrincipal) {
-		this.MenuPrincipal = MenuPrincipal;
-	}
-	
-	public void setPrimaryStage (Stage ventana) {
-		//TODO Auto-generated method sub
-		this.ventana = ventana;
-	}
-	
-	public void closeWindow() {
-		this.ventana.close();
-	}
-	
-	@FXML
-	private void ventanaNuevoDonante() {
-		this.MenuPrincipal.mostrarNuevoDonante();
-	}
+
 	
 	
 	//Botones Donante
@@ -81,10 +65,11 @@ public class ControladoraDonante {
 	   private TableColumn<Donante,String> ColCiclo;
 	   
 	
-	
+
+		
 	//Vinculacion con BBDD
 	
-	ConexionBBDD con = new ConexionBBDD();
+	   ConexionBBDD con;
 	   
 		protected ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
 		protected ObservableList<Donante> TablaDonantes2 = FXCollections.observableArrayList();
@@ -95,11 +80,12 @@ public class ControladoraDonante {
 	 
 	 public void initialize() throws SQLException{
 		
-		
+		  con = new ConexionBBDD();
 		
 		 TablaDonantes = con.MostrarTablaDonante();
 		
 		 Tabla.setItems(TablaDonantes);
+		 System.out.println("Funciona");
 		 ColN_Donante.setCellValueFactory(new PropertyValueFactory<Donante,Integer>("Nºdonante"));
 		 ColNombre.setCellValueFactory(new PropertyValueFactory<Donante,String>("Nombre"));
 		 ColApellido1.setCellValueFactory(new PropertyValueFactory<Donante,String>("Apellido1"));
@@ -117,7 +103,24 @@ public class ControladoraDonante {
 	
 	 }
 	
-	
+		public void setMenuPrincipal(Main MenuPrincipal) {
+			this.MenuPrincipal = MenuPrincipal;
+		}
+		
+		public void setPrimaryStage (Stage ventana) {
+			//TODO Auto-generated method sub
+			this.ventana = ventana;
+		}
+		
+		public void closeWindow() {
+			this.ventana.close();
+		}
+		
+		@FXML
+		private void ventanaNuevoDonante() {
+			this.MenuPrincipal.mostrarNuevoDonante();
+		}
+		
 	
 
 	
