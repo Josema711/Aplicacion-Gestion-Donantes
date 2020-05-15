@@ -14,31 +14,19 @@ public class Controladora implements Initializable{
 	
 	private Main MenuPrincipal;
 
-  //Botones Menu Principal
+  
+		//Botones Menu Principal
 	
-		@FXML
-			private Button Donantes;
-		@FXML
-			private Button Donaciones;
-		@FXML
-			private Button Estadisticas;
+	@FXML
+		private Button Donantes;
+	@FXML
+		private Button Donaciones;
+	@FXML
+		private Button Estadisticas;
 		
 
-	 public void setMenuPrincipal(Main MenuPrincipal) {
-		this.MenuPrincipal = MenuPrincipal;
-	}
-
-
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO Auto-generated method stub
+		//Metodos
 		
-	}
-	
-	/*
-	 * Cuando se pulsen las diferentes ventanas se deberan abrir
-	 */
-	
 	@FXML
 	private void ventanaDonantes() {
 		this.MenuPrincipal.mostrarDonantes();
@@ -49,12 +37,20 @@ public class Controladora implements Initializable{
 		this.MenuPrincipal.mostrarDonaciones();
 	}
 	
-	
 	@FXML
 	private void ventanaEstadisticas() {
 		this.MenuPrincipal.mostrarEstadisticas();
 	}
 	
+	 public void setMenuPrincipal(Main MenuPrincipal) {
+		this.MenuPrincipal = MenuPrincipal;
+	}
+	 
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 		
 

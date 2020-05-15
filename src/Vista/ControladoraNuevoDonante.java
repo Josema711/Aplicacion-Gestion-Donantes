@@ -39,20 +39,7 @@ public class ControladoraNuevoDonante {
 	
 	private Stage ventana;
 	
-	public void  setPrimaryStage (Stage ventana) {
-		//TODO
-		this.ventana = ventana;
-	}
-	
-	public void setMenuPrincipal(Main MenuPrincipal) {
-		this.MenuPrincipal = MenuPrincipal;
-	}
-	
-	//Al presionar abro la 3 y cierro la 2
-	
-	public void Volver() {
-		this.ventana.close();
-	}
+
 	
 	@FXML
  		private TextField Apellido1; 
@@ -304,6 +291,20 @@ public class ControladoraNuevoDonante {
 		
 		
 		
+	}
+	public void  setPrimaryStage (Stage ventana) {
+		//TODO
+		this.ventana = ventana;
+	}
+	
+	public void setMenuPrincipal(Main MenuPrincipal) {
+		this.MenuPrincipal = MenuPrincipal;
+	}
+	
+	//Al presionar abro la 3 y cierro la 2
+	
+	public void Volver() {
+		this.ventana.close();
 	}
 
 

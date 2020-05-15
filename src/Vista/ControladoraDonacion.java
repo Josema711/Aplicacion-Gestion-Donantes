@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 public class ControladoraDonacion {
 		
+	//Atributos, botones, etc
 		@FXML
 		private Button close;
 		@FXML
@@ -29,18 +30,7 @@ public class ControladoraDonacion {
 		
 		private Main MenuPrincipal;
 		
-		public void setMenuPrincipal(Main MenuPrincipal) {
-			this.MenuPrincipal = MenuPrincipal;
-		}
-		
-		public void setPrimaryStage (Stage ventana) {
-			//TODO Auto-generated method sub
-			this.ventana = ventana;
-		}
-		
-		public void closeWindow() {
-			this.ventana.close();
-		}
+	
 		
 	@FXML
  		private TextField NºDonacion; 
@@ -86,7 +76,7 @@ public class ControladoraDonacion {
 		  	
 		  //Vinculacion con BBDD
 			
-			ConexionBBDD con = new ConexionBBDD();
+			ConexionBBDD con;
 			   
 				protected ObservableList<Donacion> TablaDonaciones = FXCollections.observableArrayList();	
 				protected ObservableList<Donacion> TablaDonaciones2 = FXCollections.observableArrayList();
@@ -97,7 +87,7 @@ public class ControladoraDonacion {
 			 
 			 public void initialize() throws SQLException{
 				
-				
+				con = new ConexionBBDD();
 				
 				 TablaDonaciones = con.MostrarTablaDonacion();
 				
@@ -203,5 +193,17 @@ public class ControladoraDonacion {
 							
 
 			 		}
+				public void setMenuPrincipal(Main MenuPrincipal) {
+					this.MenuPrincipal = MenuPrincipal;
+				}
+				
+				public void setPrimaryStage (Stage ventana) {
+					//TODO Auto-generated method sub
+					this.ventana = ventana;
+				}
+				
+				public void closeWindow() {
+					this.ventana.close();
+				}
 			
 }

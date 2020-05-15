@@ -144,7 +144,22 @@ public class ControladoraDonante {
 		}
 		
 		public void ventanaEditar() {
-			this.MenuPrincipal.mostrarEditar();
+			Donante selec = Tabla.getSelectionModel().getSelectedItem();
+			String nombre = selec.getNombre();
+			String apellido1 = selec.getApellido1();
+			String apellido2 = selec.getApellido2();
+			String identificacion = selec.getIdentificacion();
+			String fecha_nacimiento = selec.getFecha_nacimiento();
+			String direccion = selec.getDireccion();
+			String poblacion = selec.getPoblacion();
+			Integer cp = selec.getCp();
+			Integer telefono = selec.getTelefono();
+			String correo = selec.getCorreo();
+			String sexo = selec.getSexo();
+			String grupo_sanguineo = selec.getGrupo_sanguineo();
+			String ciclo = selec.getCiclo();
+			this.MenuPrincipal.mostrarEditar(nombre,apellido1,apellido2,identificacion,
+	        		fecha_nacimiento,direccion,poblacion,cp,telefono,correo,sexo,grupo_sanguineo,ciclo);
 		}
 		
 		public void Buscar() throws SQLException{
