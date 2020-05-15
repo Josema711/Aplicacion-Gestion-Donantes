@@ -255,43 +255,6 @@ public class ControladoraNuevoDonante {
 		
 }
 	
-	public void Editar() throws SQLException{
-		
-		int index = Tabla.getSelectionModel().getSelectedIndex();
-		
-		if(index >=0){
-			
-			edicion=true;
-			indiceEdicion=index;
-			
-			Donante choose = Tabla.getSelectionModel().getSelectedItem();
-			
-			
-			Nombre.setText(choose.getNombre());
-			Apellido1.setText(choose.getApellido1());
-			Apellido2.setText(choose.getApellido2());
-			Identificacion.setText(choose.getIdentificacion());
-			Fecha_nacimiento.setText(choose.getFecha_nacimiento());
-			Direccion.setText(choose.getDireccion());
-			Poblacion.setText(choose.getPoblacion());
-			Correo.setText(choose.getCorreo());
-			Sangre.setText(choose.getGrupo_sanguineo());
-			Ciclo.setText(choose.getCiclo());
-
-			if(choose.getSexo().equals("Hombre") || choose.getSexo().equals("HOMBRE") || choose.getSexo().equals("H")){
-				
-				HombreBotton.setSelected(true);
-				
-			}else{
-				
-				MujerBotton.setSelected(true);
-			}
-			
-		}
-		
-		
-		
-	}
 	public void  setPrimaryStage (Stage ventana) {
 		//TODO
 		this.ventana = ventana;

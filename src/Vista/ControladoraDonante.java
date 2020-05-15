@@ -251,7 +251,7 @@ public class ControladoraDonante {
 				       
 				      if (result.get () == ButtonType.OK){
 				    	  
-							ImprimeArchivo imprime = new ImprimeArchivo("Carnet " + selec.getNombre() + " " + selec.getApellido1() + " " + selec.getApellido2(),"C:\\Users\\JoseManuel\\Desktop\\");
+							ImprimeArchivo imprime = new ImprimeArchivo("Carnet " + selec.getNombre() + " " + selec.getApellido1() + " " + selec.getApellido2(),"C:\\Users\\JoseManuel\\Desktop\\Carnets\\");
 							imprime.generarArchivoPDF(selec.getNºdonante(), selec.getNombre(), selec.getApellido1(), selec.getApellido2(), selec.getGrupo_sanguineo(), selec.getIdentificacion());
 							
 				    	   	Alert alerta = new Alert ( AlertType.INFORMATION ); 

@@ -119,7 +119,7 @@ public class ConexionBBDD {
 	
 	public void ActualizarDatosDonante(Donante Donante1,Donante Donante2) throws SQLException{
 		 
-		 String update = "UPDATE JOSEMA.DONANTE SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=? WHERE NºDONANTE=?";		
+		 String update = "UPDATE " +usr+ ".DONANTE SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=? WHERE NºDONANTE=?";		
 		
 		  PreparedStatement pstmt = conexion.prepareStatement(update);
 			
@@ -214,17 +214,20 @@ public class ConexionBBDD {
 	
 	//----------------------------------------ACCION DE BORRAR----------------------------
 	
-	public void BorrarDonante(Integer nºdonante) throws SQLException{
+	public void BorrarDonante(Integer Nºdonante) throws SQLException{
 		//Borrar datos
-		String delete = "DELETE FROM "+usr+".DONANTE WHERE NºDONANTE=?";
-		PreparedStatement pstmt = conexion.prepareStatement(delete);
-			pstmt.setInt(1, nºdonante);
+		 String delete = "DELETE FROM " +usr+ ".DONANTE WHERE NºDONANTE=?";		
+			
+		  PreparedStatement pstmt = conexion.prepareStatement(delete);
+				
+		
+			pstmt.setLong(1, Nºdonante);
 			
 		try{
-			int resultado = pstmt.executeUpdate(delete);
-
+			int resultado = pstmt.executeUpdate();
+			System.out.println("entra en bbdd");
 			if(resultado !=1)
-				System.out.println("Error en la inserción " + resultado);
+				System.out.println("Error al borrar " + resultado);
 		}catch(SQLException e){
 					
 			int pos = e.getMessage().indexOf(":");
@@ -242,7 +245,7 @@ public class ConexionBBDD {
 
 	  	ObservableList<Donante> listaDonantes =  FXCollections.observableArrayList();
 	    Statement stm = conexion.createStatement();
-	    String select = "SELECT * FROM JOSEMA.DONANTE WHERE GRUPO_SANGUINEO ='" + Sangre + "'";
+	    String select = "SELECT * FROM " +usr+ ".DONANTE WHERE GRUPO_SANGUINEO ='" + Sangre + "'";
 
 	    try{
 	    	ResultSet resultado = stm.executeQuery(select);
@@ -337,7 +340,7 @@ public class ConexionBBDD {
 			
 			//Insercion de datos
 			
-			String insert = "INSERT INTO JOSEMA.DONACION VALUES (?,?,?,?,?,?,?,?,?)";
+			String insert = "INSERT INTO " +usr+ ".DONACION VALUES (?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstmt = conexion.prepareStatement(insert);
 			
@@ -382,7 +385,7 @@ public class ConexionBBDD {
 		
 		public void ActualizarDatosDonaciones(Donacion Donacion1,Donacion Donacion2) throws SQLException{
 			 
-			 String update = "UPDATE JOSEMA.DONACION SET COD_COLECTA=?, TIPO_DONACION=?, PULSO=?, TA_SIST=?, TA_DIAST=?, HB_CAP=?, HB_VEN=?, FECHA=? WHERE NºDONACION=?";		
+			 String update = "UPDATE " +usr+ ".DONACION SET COD_COLECTA=?, TIPO_DONACION=?, PULSO=?, TA_SIST=?, TA_DIAST=?, HB_CAP=?, HB_VEN=?, FECHA=? WHERE NºDONACION=?";		
 			
 			  PreparedStatement pstmt = conexion.prepareStatement(update);
 				

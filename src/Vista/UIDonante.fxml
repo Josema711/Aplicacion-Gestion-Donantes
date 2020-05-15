@@ -11,21 +11,20 @@
 
 <SplitPane dividerPositions="0.5756385068762279" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="543.0" prefWidth="1247.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladoraDonante">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="806.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="806.0" style="-fx-background-color: #FAD7A0;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Donantes">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="nuevo" layoutX="128.0" layoutY="134.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" prefHeight="73.0" prefWidth="255.0" text="Nuevo Donante" />
-            <Button fx:id="close" layoutX="1169.0" layoutY="269.0" mnemonicParsing="false" onAction="#closeWindow" text="Volver" />
-            <TextField fx:id="FiltroTXT" layoutX="623.0" layoutY="134.0" promptText="Nombre" />
-            <Button fx:id="Buscar" layoutX="794.0" layoutY="134.0" mnemonicParsing="false" onAction="#Buscar" text="Buscar" />
-            <Label layoutX="551.0" layoutY="117.0" text="Escribe el grupo sanguineo del donante que desee encontrar :" />
-            <Button fx:id="btn_imprime" layoutX="1025.0" layoutY="158.0" mnemonicParsing="false" onAction="#imprime" text="Generar Carnet" />
-            <Button fx:id="eliminar" layoutX="623.0" layoutY="194.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="41.0" prefWidth="149.0" text="Eliminar Donante" />
-            <Button fx:id="editar" layoutX="412.0" layoutY="67.0" mnemonicParsing="false" onAction="#ventanaEditar" text="Editar Donantes" />
+            <Button fx:id="nuevo" layoutX="77.0" layoutY="134.0" mnemonicParsing="false" onAction="#ventanaNuevoDonante" prefHeight="73.0" prefWidth="255.0" text="Nuevo Donante" />
+            <Button fx:id="close" layoutX="1180.0" layoutY="277.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="8.0" prefWidth="51.0" text="Volver" />
+            <TextField fx:id="FiltroTXT" layoutX="945.0" layoutY="88.0" promptText="Grupo Sanguineo" />
+            <Button fx:id="Buscar" layoutX="1103.0" layoutY="88.0" mnemonicParsing="false" onAction="#Buscar" text="Buscar" />
+            <Button fx:id="btn_imprime" layoutX="465.0" layoutY="64.0" mnemonicParsing="false" onAction="#imprime" prefHeight="73.0" prefWidth="255.0" text="Generar Carnet" />
+            <Button fx:id="eliminar" layoutX="465.0" layoutY="204.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="73.0" prefWidth="255.0" text="Eliminar Donante" />
+            <Button fx:id="editar" layoutX="969.0" layoutY="228.0" mnemonicParsing="false" onAction="#ventanaEditar" text="Editar Donantes" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="1311.0">
          <children>

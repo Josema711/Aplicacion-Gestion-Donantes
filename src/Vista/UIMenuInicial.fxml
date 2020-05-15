@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="272.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Controladora">
+<AnchorPane prefHeight="272.0" prefWidth="328.0" style="-fx-background-color: #FAD7A0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Controladora">
    <children>
       <Label layoutX="78.0" layoutY="23.0" prefHeight="52.0" prefWidth="177.0" text="Gestion Donantes">
          <font>
