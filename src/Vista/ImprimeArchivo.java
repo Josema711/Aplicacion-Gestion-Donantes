@@ -17,10 +17,18 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class ImprimeArchivo {
 
+	//Atributos
 	private String filename;
 	private String filepath;
+	private int NºDonante;
+	private String Nombre;
+	private String Apellido1;
+	private String Apellido2;
+	private String Sangre;
+	private String Identificacion;
 
 
+	//Constructores
 	public ImprimeArchivo(String filename, String filepath) {
 		super();
 		this.filename = filename;
@@ -28,9 +36,105 @@ public class ImprimeArchivo {
 	}
 
 
+	public ImprimeArchivo(String filename, String filepath, int nºDonante, String nombre, String apellido1,
+			String apellido2, String sangre, String identificacion) {
+		super();
+		this.filename = filename;
+		this.filepath = filepath;
+		NºDonante = nºDonante;
+		Nombre = nombre;
+		Apellido1 = apellido1;
+		Apellido2 = apellido2;
+		Sangre = sangre;
+		Identificacion = identificacion;
+	}
 
+
+	
+
+	//Metodos
+	public String getFilename() {
+		return filename;
+	}
+
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+
+	public int getNºDonante() {
+		return NºDonante;
+	}
+
+
+	public void setNºDonante(int nºDonante) {
+		NºDonante = nºDonante;
+	}
+
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+
+	public String getApellido1() {
+		return Apellido1;
+	}
+
+
+	public void setApellido1(String apellido1) {
+		Apellido1 = apellido1;
+	}
+
+
+	public String getApellido2() {
+		return Apellido2;
+	}
+
+
+	public void setApellido2(String apellido2) {
+		Apellido2 = apellido2;
+	}
+
+	public String getSangre() {
+		return Sangre;
+	}
+
+
+	public void setSangre(String sangre) {
+		Sangre = sangre;
+	}
+	
+	public String getIdentificacion() {
+		return Identificacion;
+	}
+
+
+	public void setIdentificacion(String identificacion) {
+		Identificacion = identificacion;
+	}
+
+	
+	
 	/* Este método generará el PDF  */
-	public void generarArchivoPDF() throws FileNotFoundException, DocumentException {
+	public void generarArchivoPDF(int nºDonante, String nombre, String apellido1,
+			String apellido2,String sangre, String identificacion) throws FileNotFoundException, DocumentException {
 
 		// Crea el nombre del archivo con el path, el nombre del  fichero y la extensión PDF
 		String sFileNamePath = filepath + filename+".pdf";
@@ -58,9 +162,9 @@ public class ImprimeArchivo {
 		// La unidad para imprimir es el párrafo se pasa el texto del párrafo, se pueden poner saltos de línea dentro
 		// el tipo, tamaño de letra y si es en negrita (BOLD), cursiva (ITALIC), en cursivaNEgrita (BOLDITALIC) o normal (NORMAL)
 
-		Paragraph p1 = new Paragraph("Carnet de Donante",
+		Paragraph p1 = new Paragraph("CARNET DE DONANTE",
 		FontFactory.getFont("arial",   // fuente
-		14,                            // tamaño
+		13,                            // tamaño
 		Font.BOLD));
 
 		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
@@ -71,23 +175,50 @@ public class ImprimeArchivo {
 		documento.add(p1);
 
 
-		Paragraph p2 = new Paragraph("Prueba de crear carnet",
-				FontFactory.getFont("arial",   // fuente
-				11,                            // tamaño
-				Font.ITALIC));
+		Paragraph p2 = new Paragraph(nombre + " " + apellido1 + " " + apellido2,
+		FontFactory.getFont("arial",   // fuente
+		11,                            // tamaño
+		Font.ITALIC));
 
 		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
 		// ALIGN_CENTER || ALIGN_LEFT || ALIGN_RIGHT ALIGN_JUSTIFY
-		p2.setAlignment(Element.ALIGN_LEFT);
+		p2.setAlignment(Element.ALIGN_CENTER);
 
 		// Añade el párrafo al documeento
 		documento.add(p2);
+		
+		// La unidad para imprimir es el párrafo se pasa el texto del párrafo, se pueden poner saltos de línea dentro
+		// el tipo, tamaño de letra y si es en negrita (BOLD), cursiva (ITALIC), en cursivaNEgrita (BOLDITALIC) o normal (NORMAL)
 
+		Paragraph p3 = new Paragraph("Soy tipo: " + sangre,
+		FontFactory.getFont("arial",   // fuente
+		11,                            // tamaño
+		Font.ITALIC));
+
+		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
+		// ALIGN_CENTER || ALIGN_LEFT || ALIGN_RIGHT ALIGN_JUSTIFY
+		p3.setAlignment(Element.ALIGN_CENTER);
+
+		// Añade el párrafo al documeento
+		documento.add(p3);
 
 		
+		// La unidad para imprimir es el párrafo se pasa el texto del párrafo, se pueden poner saltos de línea dentro
+		// el tipo, tamaño de letra y si es en negrita (BOLD), cursiva (ITALIC), en cursivaNEgrita (BOLDITALIC) o normal (NORMAL)
 
+		Paragraph p4 = new Paragraph("DNI/NIE: " + identificacion,
+		FontFactory.getFont("arial",   // fuente
+		11,                            // tamaño
+		Font.ITALIC));
 
+		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
+		// ALIGN_CENTER || ALIGN_LEFT || ALIGN_RIGHT ALIGN_JUSTIFY
+		p4.setAlignment(Element.ALIGN_CENTER);
 
+		// Añade el párrafo al documeento
+		documento.add(p4);
+
+	
 
 		documento.close();
 
@@ -95,3 +226,10 @@ public class ImprimeArchivo {
 	}
 
 }
+	
+	
+
+
+
+	
+

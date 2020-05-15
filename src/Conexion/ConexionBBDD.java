@@ -216,7 +216,7 @@ public class ConexionBBDD {
 	
 	public void BorrarDonante(Integer nºdonante) throws SQLException{
 		//Borrar datos
-		String delete = "DELETE FROM JOSEMA.DONANTE WHERE NºDONANTE=?";
+		String delete = "DELETE FROM "+usr+".DONANTE WHERE NºDONANTE=?";
 		PreparedStatement pstmt = conexion.prepareStatement(delete);
 			pstmt.setInt(1, nºdonante);
 			

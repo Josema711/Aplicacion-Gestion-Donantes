@@ -218,9 +218,41 @@ public class ControladoraDonante {
 		
 		
 		public void imprime() throws FileNotFoundException, DocumentException{
+			
+			int index = Tabla.getSelectionModel().getSelectedIndex();
 
-			ImprimeArchivo imprime = new ImprimeArchivo("archivo","C:\\Users\\JoseManuel\\Desktop\\");
-			imprime.generarArchivoPDF();
+			if(index>=0){
+				
+				Donante selec = Tabla.getSelectionModel().getSelectedItem();
+
+						Alert alert = new Alert(AlertType.CONFIRMATION);
+				       alert.setTitle("Imprimiendo");
+				       alert.setHeaderText("Imprimiendo carnet de " + selec.getNombre() +" "+ selec.getApellido1() +" "+ selec.getApellido2());
+				      
+				       Optional <ButtonType> result = alert.showAndWait ();
+				       
+				      if (result.get () == ButtonType.OK){
+				    	  
+							ImprimeArchivo imprime = new ImprimeArchivo("Carnet " + selec.getNombre(),"C:\\Users\\JoseManuel\\Desktop\\");
+							imprime.generarArchivoPDF(selec.getNºdonante(), selec.getNombre(), selec.getApellido1() +" "+ selec.getApellido1() +" "+ selec.getApellido2(), selec.getApellido2(), selec.getGrupo_sanguineo(), selec.getIdentificacion());
+							
+				    	   	Alert alerta = new Alert ( AlertType.INFORMATION ); 
+				    	   	alerta . setTitle ( "Información" ); 
+				    	   	alerta . setHeaderText (""); 
+				    	   	alerta . setContentText ( "¡Impresion realizada!" );  
+				    	   	alerta . showAndWait ();
+				    	  
+				      }
+				      
+			}else{
+				
+					Alert alerta = new Alert(AlertType.ERROR);
+			       alerta.setTitle("Error !");
+			       alerta.setHeaderText("No se ha podido imprimir");
+			       alerta.showAndWait();
+			}
+			
+
 
 		}
 	
