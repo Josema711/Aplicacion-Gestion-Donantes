@@ -216,15 +216,12 @@ public class ConexionBBDD {
 	
 	public void BorrarDonante(Integer nºdonante) throws SQLException{
 		//Borrar datos
-		Statement stm = conexion.createStatement();
-		String delete = "DELETE * FROM JOSEMA.DONANTE WHERE NºDONANTE=?";
+		String delete = "DELETE FROM JOSEMA.DONANTE WHERE NºDONANTE=?";
 		PreparedStatement pstmt = conexion.prepareStatement(delete);
 			pstmt.setInt(1, nºdonante);
 			
-		
-
 		try{
-			int resultado = stm.executeUpdate(delete);
+			int resultado = pstmt.executeUpdate(delete);
 
 			if(resultado !=1)
 				System.out.println("Error en la inserción " + resultado);
@@ -236,10 +233,52 @@ public class ConexionBBDD {
 			if(codeError.equals("ORA-00001") )
 				System.out.println("la tabla Donante ya estaba creada!!!");
 			else
-				System.out.println("Ha habido algún problema con  Oracle al hacer el borrado de tabla");
+				System.out.println("Ha habido algún problema con  Oracle al hacer el borrado en esta tabla");
 		}
 				
 	}
+	
+	public ObservableList<Donante> FiltrarSangre(String Sangre) throws SQLException{
+
+	  	ObservableList<Donante> listaDonantes =  FXCollections.observableArrayList();
+	    Statement stm = conexion.createStatement();
+	    String select = "SELECT * FROM JOSEMA.DONANTE WHERE GRUPO_SANGUINEO ='" + Sangre + "'";
+
+	    try{
+	    	ResultSet resultado = stm.executeQuery(select);
+
+	    	while(resultado.next()){
+	    		Integer nºdonante = resultado.getInt(1);
+				String nombre = resultado.getString(2);
+				String apellido1 = resultado.getString(3);
+				String apellido2 = resultado.getString(4);
+				String identificacion = resultado.getString(5);
+				String fecha_nacimiento = resultado.getString(6);
+				String direccion = resultado.getString(7);
+				String poblacion = resultado.getString(8);
+				Integer cp = resultado.getInt(9);
+				Integer telefono = resultado.getInt(10);
+				String correo = resultado.getString(11);
+				String sexo = resultado.getString(12);
+				String grupo_sanguineo = resultado.getString(13);
+				String ciclo = resultado.getString(14);
+	    				
+				Donante donante = new Donante(nºdonante, nombre, apellido1, apellido2, identificacion, fecha_nacimiento, direccion, poblacion, cp, telefono, correo, sexo, grupo_sanguineo, ciclo);
+				listaDonantes.add(donante);
+	    	}
+
+	    }catch(SQLException e){
+
+	    				
+	    	int pos = e.getMessage().indexOf(":");
+	    	String codeError = e.getMessage().substring(0,pos);
+
+	    	System.out.println(codeError);
+	    }
+	    	
+	    return listaDonantes;
+    
+}
 	
 	
 	
@@ -375,5 +414,7 @@ public class ConexionBBDD {
 				System.out.println("Ha habido algún problema con Oracle al hacer la modificación de campo");
 		}
 			  }
+
+		
 	
 }

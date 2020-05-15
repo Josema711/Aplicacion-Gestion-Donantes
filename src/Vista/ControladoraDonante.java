@@ -1,16 +1,25 @@
 package Vista;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.Optional;
+
+import com.itextpdf.text.DocumentException;
 
 import Conexion.ConexionBBDD;
 import Objetos.Donante;
 import Principal.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -24,6 +33,12 @@ public class ControladoraDonante {
 	private Button nuevo;
 	@FXML
 	private Button editar;
+	@FXML
+	private Button eliminar;
+	@FXML
+	private Button btn_imprime;
+
+
 	
 	private Stage ventana;
 	
@@ -66,6 +81,13 @@ public class ControladoraDonante {
 	   @FXML
 	   private TableColumn<Donante,String> ColCiclo;
 	   
+	   @FXML
+	   private Button Buscar;
+	   @FXML
+	   private Button Eliminar;
+	   @FXML
+	   private TextField FiltroTXT;
+	   
 	
 
 		
@@ -74,6 +96,7 @@ public class ControladoraDonante {
 	   ConexionBBDD con;
 	   
 		public ObservableList<Donante> TablaDonantes = FXCollections.observableArrayList();	
+		 private ObservableList<Donante> ListaFiltrado = FXCollections.observableArrayList();
 		
 	 
 	 
@@ -119,10 +142,87 @@ public class ControladoraDonante {
 		public void ventanaNuevoDonante() {
 			this.MenuPrincipal.mostrarNuevoDonante();
 		}
-		public void ventanaEditarDonante() {
-			this.MenuPrincipal.mostrarEdicion();
+		
+		
+		public void Buscar() throws SQLException{
+			
+			
+			if(FiltroTXT.getText().length()==0){
+				
+				initialize();
+			
+			}else{
+				
+				ListaFiltrado=con.FiltrarSangre(FiltroTXT.getText());
+				Tabla.setItems(ListaFiltrado);
+				if(ListaFiltrado.size()!=0){
+					Alert alerta = new Alert ( AlertType.INFORMATION ); 
+				   	alerta . setTitle ( "Información" ); 
+				   	alerta . setHeaderText (""); 
+				   	alerta . setContentText ("Los donantes con sangre : " +FiltroTXT.getText() + " ");  
+				   	alerta . showAndWait();
+				}else{
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error!!!");
+					alert.setHeaderText("Observa los datos introducidos");
+					alert.setContentText("No existe nadie hasta el momento con ese tipo de sangre :" + FiltroTXT.getText() +"");
+					alert.showAndWait();
+				}
+				
+			}
+
+
 		}
 		
+		public void Eliminar(ActionEvent event) throws SQLException{
+			
+			int index = Tabla.getSelectionModel().getSelectedIndex();
+
+			if(index>=0){
+				
+				Donante selec = Tabla.getSelectionModel().getSelectedItem();
+
+						Alert alert = new Alert(AlertType.CONFIRMATION);
+				       alert.setTitle("Borrando...");
+				       alert.setHeaderText("Desea Borrar a " + selec.getNombre() +" "+ selec.getApellido1() +" "+ selec.getApellido2());
+				      
+				       Optional <ButtonType> result = alert.showAndWait ();
+				       
+				      if (result.get () == ButtonType.OK){
+				    	  
+				    	  	con.BorrarDonante(selec.getNºdonante());
+				    	  	System.out.println("Pasa por aqui");
+				    	   	TablaDonantes.remove(selec);
+							
+				    	   	Alert alerta = new Alert ( AlertType.INFORMATION ); 
+				    	   	alerta . setTitle ( "Información" ); 
+				    	   	alerta . setHeaderText (""); 
+				    	   	alerta . setContentText ( "¡Eliminado correctamente!" );  
+				    	   	alerta . showAndWait ();
+				    	  
+				      }
+				      
+			}else{
+				
+					Alert alerta = new Alert(AlertType.ERROR);
+			       alerta.setTitle("Error !");
+			       alerta.setHeaderText("Tiene que seleccionar una fila...");
+			       alerta.showAndWait();
+			}
+			
+
+		}
+			
+			
+	
+		
+		
+		public void imprime() throws FileNotFoundException, DocumentException{
+
+			ImprimeArchivo imprime = new ImprimeArchivo("archivo","C:\\Users\\JoseManuel\\Desktop\\");
+			imprime.generarArchivoPDF();
+
+		}
 	
 
 	
