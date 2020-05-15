@@ -165,7 +165,7 @@ public class ConexionBBDD {
 		
 		//Insercion de datos
 		
-		String insert = "INSERT INTO JOSEMA.DONANTE VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO " +usr+ ".DONANTE VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement pstmt = conexion.prepareStatement(insert);
 		

@@ -3,6 +3,7 @@ package Principal;
 import Vista.Controladora;
 import Vista.ControladoraDonacion;
 import Vista.ControladoraDonante;
+import Vista.ControladoraEdicion;
 import Vista.ControladoraEstadisticas;
 import Vista.ControladoraNuevoDonante;
 import javafx.application.Application;
@@ -159,6 +160,33 @@ public class Main extends Application {
         	 */
         
         ControladoraNuevoDonante controladora = loader.getController();
+        controladora.setPrimaryStage(ventana);
+        controladora.setMenuPrincipal(this);
+        
+        ventana.show();
+        
+       } catch(Exception e) {
+		e.printStackTrace();
+	}
+		
+	}
+	
+	public void mostrarEditar() {
+		try {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("..\\Vista\\UIEdicion.fxml"));
+        AnchorPane VentanaEdicion = (AnchorPane) loader.load();
+        //Creamos la segunda ventana como otro stage
+        Stage ventana = new Stage();
+        ventana.setTitle("Edicion");
+        //Marcamos cual es la pincipal
+        ventana.initOwner(primaryStage);
+        Scene scene = new Scene(VentanaEdicion);
+        ventana.setScene(scene);
+        	/*
+        	 * Añadimos las llamadas del main al controlador y del controlador al main
+        	 */
+        
+        ControladoraEdicion controladora = loader.getController();
         controladora.setPrimaryStage(ventana);
         controladora.setMenuPrincipal(this);
         

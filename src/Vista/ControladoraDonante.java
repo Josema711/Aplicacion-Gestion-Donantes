@@ -143,6 +143,9 @@ public class ControladoraDonante {
 			this.MenuPrincipal.mostrarNuevoDonante();
 		}
 		
+		public void ventanaEditar() {
+			this.MenuPrincipal.mostrarEditar();
+		}
 		
 		public void Buscar() throws SQLException{
 			
@@ -233,8 +236,8 @@ public class ControladoraDonante {
 				       
 				      if (result.get () == ButtonType.OK){
 				    	  
-							ImprimeArchivo imprime = new ImprimeArchivo("Carnet " + selec.getNombre(),"C:\\Users\\JoseManuel\\Desktop\\");
-							imprime.generarArchivoPDF(selec.getNºdonante(), selec.getNombre(), selec.getApellido1() +" "+ selec.getApellido1() +" "+ selec.getApellido2(), selec.getApellido2(), selec.getGrupo_sanguineo(), selec.getIdentificacion());
+							ImprimeArchivo imprime = new ImprimeArchivo("Carnet " + selec.getNombre() + " " + selec.getApellido1() + " " + selec.getApellido2(),"C:\\Users\\JoseManuel\\Desktop\\");
+							imprime.generarArchivoPDF(selec.getNºdonante(), selec.getNombre(), selec.getApellido1(), selec.getApellido2(), selec.getGrupo_sanguineo(), selec.getIdentificacion());
 							
 				    	   	Alert alerta = new Alert ( AlertType.INFORMATION ); 
 				    	   	alerta . setTitle ( "Información" ); 

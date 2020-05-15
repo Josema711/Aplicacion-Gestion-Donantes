@@ -217,6 +217,18 @@ public class ImprimeArchivo {
 
 		// Añade el párrafo al documeento
 		documento.add(p4);
+		
+		Paragraph p5 = new Paragraph("Soy el donante nº: " + nºDonante,
+		FontFactory.getFont("arial",   // fuente
+		11,                            // tamaño
+		Font.ITALIC));
+
+		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
+		// ALIGN_CENTER || ALIGN_LEFT || ALIGN_RIGHT ALIGN_JUSTIFY
+		p5.setAlignment(Element.ALIGN_CENTER);
+
+		// Añade el párrafo al documeento
+		documento.add(p5);
 
 	
 

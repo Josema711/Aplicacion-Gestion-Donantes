@@ -97,10 +97,11 @@ public class ControladoraNuevoDonante {
 	public boolean edicion=false;
 	public int indiceEdicion=0;
 	
-	ConexionBBDD con = new ConexionBBDD();
+	ConexionBBDD con;
 
  	public void Guardar(ActionEvent event) throws SQLException{
  		
+ 		con = new ConexionBBDD();
  		//Numero aleatorio para que no se repitan
  		Integer NºDonante = (int) (Math.random()*(99999));
  		NºDonante = (int) Math.floor(NºDonante);
@@ -227,6 +228,7 @@ public class ControladoraNuevoDonante {
  	
  	public void Eliminar(ActionEvent event) throws SQLException{
  		
+ 		con = new ConexionBBDD();
 		int index = Tabla.getSelectionModel().getSelectedIndex();
 
 		if(index>=0){
