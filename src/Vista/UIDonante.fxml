@@ -24,7 +24,7 @@
             <Button fx:id="Buscar" layoutX="1103.0" layoutY="88.0" mnemonicParsing="false" onAction="#Buscar" text="Buscar" />
             <Button fx:id="btn_imprime" layoutX="465.0" layoutY="64.0" mnemonicParsing="false" onAction="#imprime" prefHeight="73.0" prefWidth="255.0" text="Generar Carnet" />
             <Button fx:id="eliminar" layoutX="465.0" layoutY="204.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="73.0" prefWidth="255.0" text="Eliminar Donante" />
-            <Button fx:id="editar" layoutX="969.0" layoutY="228.0" mnemonicParsing="false" onAction="#ventanaEditar" text="Editar Donantes" />
+            <Button fx:id="editar" layoutX="815.0" layoutY="180.0" mnemonicParsing="false" onAction="#ventanaEditar" prefHeight="73.0" prefWidth="255.0" text="Editar Donantes" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="1311.0">
          <children>

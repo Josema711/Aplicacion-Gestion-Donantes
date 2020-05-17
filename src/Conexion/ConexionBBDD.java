@@ -119,26 +119,27 @@ public class ConexionBBDD {
 	
 	public void ActualizarDatosDonante(Donante Donante1,Donante Donante2) throws SQLException{
 		 
-		 String update = "UPDATE " +usr+ ".DONANTE SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=? WHERE NºDONANTE=?";		
+		 String update = "UPDATE " +usr+ ".DONANTE SET NºDONANTE=?,NOMBRE=?,APELLIDO1=?,APELLIDO2=?,IDENTIFICACION=?,FECHA_NACIMIENTO=?,DIRECCION=?,POBLACION=?,CP=?,TELEFONO=?,CORREO=?,SEXO=?,GRUPO_SANGUINEO=?,CICLO=? WHERE NºDONANTE=?";		
 		
 		  PreparedStatement pstmt = conexion.prepareStatement(update);
 			
 
 				
-			pstmt.setLong(1, Donante2.getNºdonante());
-			pstmt.setString(2, Donante2.getNombre());
-			pstmt.setString(3, Donante2.getApellido1());
-			pstmt.setString(4, Donante2.getApellido2());
-			pstmt.setString(5, Donante2.getIdentificacion());
-			pstmt.setString(6, Donante2.getFecha_nacimiento());
-			pstmt.setString(7, Donante2.getDireccion());
-			pstmt.setString(8, Donante2.getPoblacion());
-			pstmt.setLong(9, Donante2.getCp());
-			pstmt.setLong(10, Donante2.getTelefono());
-			pstmt.setString(11, Donante2.getCorreo());
-			pstmt.setString(12, Donante2.getSexo());
-			pstmt.setString(13, Donante2.getGrupo_sanguineo());
-			pstmt.setString(14, Donante2.getCiclo());
+		  	pstmt.setLong(1, Donante2.getNºdonante());
+			pstmt.setString(1, Donante2.getNombre());
+			pstmt.setString(2, Donante2.getApellido1());
+			pstmt.setString(3, Donante2.getApellido2());
+			pstmt.setString(4, Donante2.getIdentificacion());
+			pstmt.setString(5, Donante2.getFecha_nacimiento());
+			pstmt.setString(6, Donante2.getDireccion());
+			pstmt.setString(7, Donante2.getPoblacion());
+			pstmt.setLong(8, Donante2.getCp());
+			pstmt.setLong(9, Donante2.getTelefono());
+			pstmt.setString(10, Donante2.getCorreo());
+			pstmt.setString(11, Donante2.getSexo());
+			pstmt.setString(12, Donante2.getGrupo_sanguineo());
+			pstmt.setString(13, Donante2.getCiclo());
+			pstmt.setLong(14, Donante1.getNºdonante());
 
 	try{
 			int resultado = pstmt.executeUpdate(update);

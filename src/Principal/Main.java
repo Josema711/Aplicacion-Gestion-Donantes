@@ -172,12 +172,10 @@ public class Main extends Application {
 		
 	}
 	
-	public void mostrarEditar(String nombre, String apellido1, String apellido2, String identificacion,
-			String fecha_nacimiento, String direccion, String poblacion, Integer cp, Integer telefono, String correo, String sexo,
-			String grupo_sanguineo, String ciclo) {
+	public void mostrarEditar() {
 		try {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("..\\Vista\\UIEdicion.fxml"));
-        AnchorPane VentanaEdicion = (AnchorPane) loader.load();
+        SplitPane VentanaEdicion = (SplitPane) loader.load();
         //Creamos la segunda ventana como otro stage
         Stage ventana = new Stage();
         ventana.setTitle("Edicion");
@@ -192,8 +190,6 @@ public class Main extends Application {
         ControladoraEdicion controladora = loader.getController();
         controladora.setPrimaryStage(ventana);
         controladora.setMenuPrincipal(this);
-        controladora.setDonante(nombre,apellido1,apellido2,identificacion,
-        		fecha_nacimiento,direccion,poblacion,cp,telefono,correo,sexo,grupo_sanguineo,ciclo);
         
         ventana.show();
         
